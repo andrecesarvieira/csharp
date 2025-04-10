@@ -68,7 +68,7 @@ namespace SharpPonto.Dados
                 using (var conexao = Conexao())
                 using (var cmd = conexao.CreateCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM Registros";
+                    cmd.CommandText = "SELECT * FROM Registros ORDER BY Data DESC";
                     da = new SQLiteDataAdapter(cmd.CommandText, Conexao());
                     da.Fill(dt);
                     return dt;

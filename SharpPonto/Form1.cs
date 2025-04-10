@@ -16,7 +16,7 @@ namespace SharpPonto
             dataGridView1.Columns["gridManha"].HeaderCell.Style.BackColor = Color.LightSteelBlue;
             dataGridView1.Columns["gridTarde"].HeaderCell.Style.BackColor = Color.LightSteelBlue;
             dataGridView1.Columns["gridTotal"].HeaderCell.Style.BackColor = Color.LightGoldenrodYellow;
-            
+
             Dados.Database.CriarBancoDeDados();
             Dados.Database.CriarTabela();
             Dados.Database.LerRegistros();
@@ -99,6 +99,7 @@ namespace SharpPonto
             {
                 Dados.Database.InserirRegistro(registro, n);
                 ExibirDados();
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -238,6 +239,7 @@ namespace SharpPonto
             {
                 Dados.Database.InserirRegistro(registro, 5);
                 ExibirDados();
+                dataGridView1.ClearSelection();
             }
             catch (Exception ex)
             {
@@ -302,7 +304,7 @@ namespace SharpPonto
                                 dataFormatada = dataFormatada.Replace("/", "/").Replace("jan", "Jan").Replace("fev", "Fev")
                                     .Replace("mar", "Mar").Replace("abr", "Abr").Replace("mai", "Mai").Replace("jun", "Jun")
                                     .Replace("jul", "Jul").Replace("ago", "Ago").Replace("set", "Set").Replace("out", "Out")
-                                    .Replace("nov", "Nov").Replace("dez", "Dez").Replace(".","");
+                                    .Replace("nov", "Nov").Replace("dez", "Dez").Replace(".", "");
                             }
                             catch
                             {
@@ -330,6 +332,5 @@ namespace SharpPonto
                 MessageBox.Show($"Erro ao exportar o arquivo: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
     }
 }
