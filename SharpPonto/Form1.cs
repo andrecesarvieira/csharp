@@ -65,9 +65,16 @@ namespace SharpPonto
 
             if (dt.Rows.Count == 0)
             {
+                registro.Almoco = TimeOnly.Parse("00:00");
+                registro.Retorno = TimeOnly.Parse("00:00");
+                registro.Saida = TimeOnly.Parse("00:00");
+                registro.Manha = TimeOnly.Parse("00:00");
+                registro.Tarde = TimeOnly.Parse("00:00");
+                registro.TotalDia = TimeOnly.Parse("00:00");
+                
                 n = 1;
             }
-            else if (dt.Rows[0]["Almoco"] == DBNull.Value)
+            else if (TimeOnly.Parse(dt.Rows[0]["Almoco"].ToString()!) == TimeOnly.Parse("00:00"))
             {
                 string hrInicial = (dt.Rows[0]["Entrada"]).ToString()!;
                 string hrFinal = registro.Almoco.ToString("HH:mm");
@@ -76,11 +83,11 @@ namespace SharpPonto
 
                 n = 2;
             }
-            else if (dt.Rows[0]["Retorno"] == DBNull.Value)
+            else if (TimeOnly.Parse(dt.Rows[0]["Retorno"].ToString()!) == TimeOnly.Parse("00:00"))
             {
                 n = 3;
             }
-            else if (dt.Rows[0]["Saida"] == DBNull.Value)
+            else if (TimeOnly.Parse(dt.Rows[0]["Saida"].ToString()!) == TimeOnly.Parse("00:00"))
             {
                 string hrInicial = (dt.Rows[0]["Retorno"]).ToString()!;
                 string hrFinal = registro.Saida.ToString("HH:mm");
@@ -221,18 +228,26 @@ namespace SharpPonto
             {
                 string hrInicial = registro.Entrada.ToString("HH:mm");
                 string hrFinal = registro.Almoco.ToString("HH:mm");
-
-                registro.Manha = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
+                if (hrInicial != "00:00" && hrFinal != "00:00")
+                {
+                    registro.Manha = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
+                }
 
                 hrInicial = registro.Retorno.ToString("HH:mm");
                 hrFinal = registro.Saida.ToString("HH:mm");
-
-                registro.Tarde = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
+                
+                if (hrInicial != "00:00" && hrFinal != "00:00")
+                {
+                    registro.Tarde = TimeOnly.FromTimeSpan(CalcularPeriodo(hrInicial, hrFinal));
+                }
 
                 string totalManha = registro.Manha.ToString("HH:mm");
                 string totalTarde = registro.Tarde.ToString("HH:mm");
 
-                registro.TotalDia = TimeOnly.FromTimeSpan(CalcularTotalDia(totalManha, totalTarde));
+                if (totalManha != "00:00" && totalTarde != "00:00")
+                {
+                    registro.TotalDia = TimeOnly.FromTimeSpan(CalcularTotalDia(totalManha, totalTarde));
+                }
             }
 
             try

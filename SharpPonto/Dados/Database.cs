@@ -112,9 +112,16 @@ namespace SharpPonto.Dados
                     switch (n)
                     {
                         case 1:
-                            cmd.CommandText = "INSERT INTO Registros (Data, Entrada) VALUES (@Data, @Entrada);";
+                            cmd.CommandText = "INSERT INTO Registros (Data, Entrada, Almoco, Retorno, Saida, Manha, Tarde, TotalDia) " +
+                                "VALUES (@Data, @Entrada, @Almoco, @Retorno, @Saida, @Manha, @Tarde, @TotalDia);";
                             cmd.Parameters.AddWithValue("@Data", registro.Data.ToString("yyyy/MM/dd"));
                             cmd.Parameters.AddWithValue("@Entrada", registro.Entrada.ToString("HH:mm"));
+                            cmd.Parameters.AddWithValue("@Almoco", registro.Almoco.ToString("HH:mm"));
+                            cmd.Parameters.AddWithValue("@Retorno", registro.Retorno.ToString("HH:mm"));
+                            cmd.Parameters.AddWithValue("@Saida", registro.Saida.ToString("HH:mm"));
+                            cmd.Parameters.AddWithValue("@Manha", registro.Manha.ToString("HH:mm"));
+                            cmd.Parameters.AddWithValue("@Tarde", registro.Tarde.ToString("HH:mm"));
+                            cmd.Parameters.AddWithValue("@TotalDia", registro.TotalDia.ToString("HH:mm"));
                             cmd.ExecuteNonQuery();
                             break;
                         case 2:
