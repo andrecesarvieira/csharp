@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("André Vieira")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4228fa646b30f28e7476b90a3eb73fd7e8a9dea0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6a1085fb9a9aaa7de9d5dc81aa939b97e1d93923")]
 [assembly: System.Reflection.AssemblyProductAttribute("SharpPonto")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SharpPonto")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
