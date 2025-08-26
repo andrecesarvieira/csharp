@@ -51,7 +51,6 @@
             textRetorno = new MaskedTextBox();
             textSaida = new MaskedTextBox();
             btnInserir = new Button();
-            lblPath = new Label();
             dgvRegistros = new DataGridView();
             gridId = new DataGridViewTextBoxColumn();
             gridData = new DataGridViewTextBoxColumn();
@@ -179,16 +178,6 @@
             btnInserir.UseVisualStyleBackColor = false;
             btnInserir.Click += BtnInserir_Click;
             // 
-            // lblPath
-            // 
-            lblPath.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            lblPath.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblPath.Location = new Point(12, 538);
-            lblPath.Name = "lblPath";
-            lblPath.Size = new Size(868, 20);
-            lblPath.TabIndex = 10;
-            lblPath.TextAlign = ContentAlignment.MiddleLeft;
-            // 
             // dgvRegistros
             // 
             dgvRegistros.AllowUserToAddRows = false;
@@ -223,7 +212,7 @@
             dgvRegistros.EditMode = DataGridViewEditMode.EditProgrammatically;
             dgvRegistros.EnableHeadersVisualStyles = false;
             dgvRegistros.GridColor = SystemColors.ButtonShadow;
-            dgvRegistros.Location = new Point(12, 12);
+            dgvRegistros.Location = new Point(12, 10);
             dgvRegistros.Name = "dgvRegistros";
             dgvRegistros.ReadOnly = true;
             dgvRegistros.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -402,8 +391,8 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(892, 567);
-            Controls.Add(lblPath);
+            BackgroundImageLayout = ImageLayout.None;
+            ClientSize = new Size(892, 544);
             Controls.Add(btnInserir);
             Controls.Add(textSaida);
             Controls.Add(textRetorno);
@@ -417,7 +406,9 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
+            MdiChildrenMinimizedAnchorBottom = false;
             Name = "MainForm";
+            SizeGripStyle = SizeGripStyle.Hide;
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SharpPonto 2025";
             Load += MainForm_Load;
@@ -436,7 +427,6 @@
         private MaskedTextBox textRetorno;
         private MaskedTextBox textSaida;
         private Button btnInserir;
-        private Label lblPath;
         private DataGridView dgvRegistros;
         private DataGridViewTextBoxColumn gridId;
         private DataGridViewTextBoxColumn gridData;

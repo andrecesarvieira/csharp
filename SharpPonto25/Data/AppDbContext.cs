@@ -17,12 +17,5 @@ namespace SharpPonto25.Data
         {
             Database.Migrate();
         }
-
-        //public static string CaminhoDb()
-        //{
-        //    string diretorioAplicacao = AppDomain.CurrentDomain.BaseDirectory;
-        //    string path = Path.Combine(diretorioAplicacao, "SharpPonto.db");
-        //    return path;
-        //}
     }
 }

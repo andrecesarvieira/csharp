@@ -14,7 +14,7 @@ namespace SharpPonto25.Services
             TimeOnly retorno = TimeOnly.TryParse(dados[3], out TimeOnly temp3) ? temp3 : TimeOnly.MinValue;
             TimeOnly saida = TimeOnly.TryParse(dados[4], out TimeOnly temp4) ? temp4 : TimeOnly.MinValue;
 
-            var novoRegistro = new Registro
+            Registro novoRegistro = new Registro
             {
                 Data = data,
                 Entrada = entrada,

@@ -24,14 +24,14 @@ namespace SharpPonto25.Services
 
         public async Task<Registro?> ObterRegistroDoDiaAsync(DateOnly? data = null)
         {
-            var dataConsulta = data ?? DateOnly.FromDateTime(DateTime.Now);
+            DateOnly dataConsulta = data ?? DateOnly.FromDateTime(DateTime.Now);
             return await _repository.ObterPorData(dataConsulta);
         }
 
         public async Task<bool> RegistrarPontoAsync()
         {
-            var dataHoje = DateOnly.FromDateTime(DateTime.Now);
-            var horaAtual = TimeOnly.FromDateTime(DateTime.Now);
+            DateOnly dataHoje = DateOnly.FromDateTime(DateTime.Now);
+            TimeOnly horaAtual = TimeOnly.FromDateTime(DateTime.Now);
 
             // Verifica se já existe registro para hoje
             bool registroExiste = await _repository.DataExisteAsync(dataHoje);
@@ -55,7 +55,7 @@ namespace SharpPonto25.Services
             else
             {
                 // Atualizar registro existente
-                var registro = await _repository.ObterPorData(dataHoje);
+                Registro? registro = await _repository.ObterPorData(dataHoje);
 
                 if (registro is null)
                 {
@@ -72,7 +72,7 @@ namespace SharpPonto25.Services
                 else if (registro.Saida == TimeOnly.FromDateTime(DateTime.MinValue))
                     registro.Saida = horaAtual;
 
-                var reg = CalcularHorasService.CalcularHorasRegistro(registro);
+                Registro reg = CalcularHorasService.CalcularHorasRegistro(registro);
 
                 await _repository.AtualizarRegistroAsync(reg);
             }
@@ -88,7 +88,7 @@ namespace SharpPonto25.Services
 
             if (!registroExiste)
             {
-                var reg = CalcularHorasService.CalcularHorasRegistro(registro);
+                Registro reg = CalcularHorasService.CalcularHorasRegistro(registro);
 
                 await _repository.InserirRegistroAsync(reg);
                 await _repository.SalvarMudancasRegistroAsync();

@@ -18,7 +18,7 @@ namespace SharpPonto25.Services
 
             try
             {
-                using var streamWriter = new StreamWriter(caminhoArquivo, false, Encoding.UTF8);
+                using StreamWriter streamWriter = new(caminhoArquivo, false, Encoding.UTF8);
 
                 foreach (var registro in registros.OrderByDescending(r => r.Data))
                 {

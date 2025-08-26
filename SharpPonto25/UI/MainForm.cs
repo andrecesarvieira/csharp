@@ -16,15 +16,6 @@ namespace SharpPonto25
 
             _registroService = registroService;
             _exportarService = exportarService;
-
-            // Configurar tema baseado nas configurações do sistema
-            //ConfigurarTemaVisual();
-
-            //dgvRegistros.Columns["gridManha"].HeaderCell.Style.BackColor = Color.LightSteelBlue;
-            //dgvRegistros.Columns["gridTarde"].HeaderCell.Style.BackColor = Color.LightSteelBlue;
-            //dgvRegistros.Columns["gridTotal"].HeaderCell.Style.BackColor = Color.LightGoldenrodYellow;
-
-            //lblPath.Text = $"Banco de dados => {AppDbContext.CaminhoDb()}";
         }
 
         private async void MainForm_Load(object sender, EventArgs e)
@@ -32,8 +23,7 @@ namespace SharpPonto25
             using (var ctx = new AppDbContext())
             {
                 ctx.AplicarMigracao();
-            }
-            ;
+            };
 
             await CarregarDadosAsync();
         }
@@ -42,7 +32,7 @@ namespace SharpPonto25
         {
             try
             {
-                var registros = await _registroService.ObterTodosRegistrosAsync();
+                List<Registro> registros = await _registroService.ObterTodosRegistrosAsync();
                 dgvRegistros.DataSource = registros;
                 dgvRegistros.ClearSelection();
             }
@@ -194,105 +184,6 @@ namespace SharpPonto25
                     textAlmoco.Text = r.Almoco.ToString();
                     textRetorno.Text = r.Retorno.ToString();
                     textSaida.Text = r.Saida.ToString();
-                }
-            }
-        }
-        private void ConfigurarTemaVisual()
-        {
-            // Verifica se o sistema está usando tema escuro
-            bool temaEscuro = false;
-            try
-            {
-                // Tenta obter a configuração de tema do Windows
-                using (var key = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize"))
-                {
-                    if (key != null)
-                    {
-                        object value = key.GetValue("AppsUseLightTheme");
-                        if (value != null && value is int intValue)
-                        {
-                            temaEscuro = intValue == 0;
-                        }
-                    }
-                }
-            }
-            catch
-            {
-                // Em caso de falha, usa o tema claro como padrão
-                temaEscuro = false;
-            }
-
-            // Aplica o tema aos controles
-            if (temaEscuro)
-            {
-                // Tema escuro
-                BackColor = Color.FromArgb(32, 32, 32);
-                ForeColor = Color.White;
-
-                dgvRegistros.BackgroundColor = Color.FromArgb(45, 45, 45);
-                dgvRegistros.DefaultCellStyle.BackColor = Color.FromArgb(45, 45, 45);
-                dgvRegistros.DefaultCellStyle.ForeColor = Color.White;
-                dgvRegistros.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(60, 60, 60);
-                dgvRegistros.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-                dgvRegistros.GridColor = Color.FromArgb(70, 70, 70);
-
-                foreach (Control control in Controls)
-                {
-                    if (control is Button btn)
-                    {
-                        btn.BackColor = Color.FromArgb(60, 60, 60);
-                        btn.ForeColor = Color.White;
-                        btn.FlatStyle = FlatStyle.Flat;
-                        btn.FlatAppearance.BorderColor = Color.FromArgb(100, 100, 100);
-                    }
-                    else if (control is TextBox txt)
-                    {
-                        txt.BackColor = Color.FromArgb(50, 50, 50);
-                        txt.ForeColor = Color.White;
-                    }
-                    else if (control is Label lbl)
-                    {
-                        lbl.ForeColor = Color.White;
-                    }
-                    else if (control is Panel pnl)
-                    {
-                        pnl.BackColor = Color.FromArgb(40, 40, 40);
-                    }
-                }
-            }
-            else
-            {
-                // Tema claro (padrão)
-                BackColor = SystemColors.Control;
-                ForeColor = SystemColors.ControlText;
-
-                dgvRegistros.BackgroundColor = SystemColors.Window;
-                dgvRegistros.DefaultCellStyle.BackColor = SystemColors.Window;
-                dgvRegistros.DefaultCellStyle.ForeColor = SystemColors.ControlText;
-                dgvRegistros.ColumnHeadersDefaultCellStyle.BackColor = SystemColors.Control;
-                dgvRegistros.ColumnHeadersDefaultCellStyle.ForeColor = SystemColors.ControlText;
-                dgvRegistros.GridColor = SystemColors.ControlDark;
-
-                foreach (Control control in Controls)
-                {
-                    if (control is Button btn)
-                    {
-                        btn.UseVisualStyleBackColor = true;
-                        btn.FlatStyle = FlatStyle.Standard;
-                    }
-                    else if (control is TextBox txt)
-                    {
-                        txt.BackColor = SystemColors.Window;
-                        txt.ForeColor = SystemColors.WindowText;
-                    }
-                    else if (control is Label lbl)
-                    {
-                        lbl.ForeColor = SystemColors.ControlText;
-                    }
-                    else if (control is Panel pnl)
-                    {
-                        pnl.BackColor = SystemColors.Control;
-                    }
                 }
             }
         }
