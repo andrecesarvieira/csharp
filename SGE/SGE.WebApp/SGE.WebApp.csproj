@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Components\Pages\Weather.razor" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SGE.CasosDeUso\SGE.CasosDeUso.csproj" />
     <ProjectReference Include="..\SGE.Entidades\SGE.Entidades.csproj" />
     <ProjectReference Include="..\SGE.Plugins\SGE.PluginsTeste\SGE.PluginsTeste.csproj" />
