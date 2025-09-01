@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpPontoWeb", "SharpPontoWeb.csproj", "{BF6B2796-27AE-D156-7B8D-0688ECB15AD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF6B2796-27AE-D156-7B8D-0688ECB15AD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF6B2796-27AE-D156-7B8D-0688ECB15AD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF6B2796-27AE-D156-7B8D-0688ECB15AD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF6B2796-27AE-D156-7B8D-0688ECB15AD3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3F32B8ED-A8EE-464B-99AA-38847E8710C5}
+	EndGlobalSection
+EndGlobal

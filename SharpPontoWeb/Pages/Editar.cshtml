@@ -1,0 +1,30 @@
+@page "{id:int}"
+@model SharpPontoWeb.Pages.EditarModel
+
+<h2>Editar Registro de Ponto</h2>
+
+<form method="post">
+    <input type="hidden" asp-for="Registro.Id" />
+    <div class="mb-3">
+        <label>Data</label>
+        <input type="date" asp-for="Registro.Data" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Entrada</label>
+        <input type="time" asp-for="Registro.Entrada" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Almoço</label>
+        <input type="time" asp-for="Registro.Almoco" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Retorno</label>
+        <input type="time" asp-for="Registro.Retorno" class="form-control" required />
+    </div>
+    <div class="mb-3">
+        <label>Saída</label>
+        <input type="time" asp-for="Registro.Saida" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-success">Salvar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
