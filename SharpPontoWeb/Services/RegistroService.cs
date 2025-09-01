@@ -1,4 +1,3 @@
-using System.Data;
 using SharpPontoWeb.Interfaces;
 using SharpPontoWeb.Models;
 
@@ -103,7 +102,8 @@ namespace SharpPontoWeb.Services
 
         public async Task<bool> AtualizarRegistroAsync(Registro registro)
         {
-            await _repository.AtualizarRegistroAsync(registro);
+            var registroCalculado = CalcularHorasService.CalcularHorasRegistro(registro);
+            await _repository.AtualizarRegistroAsync(registroCalculado);
             await _repository.SalvarMudancasRegistroAsync();
             return true;
         }

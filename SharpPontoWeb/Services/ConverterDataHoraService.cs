@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using SharpPontoWeb.Models;
 
 namespace SharpPontoWeb.Services
@@ -18,7 +14,7 @@ namespace SharpPontoWeb.Services
             TimeOnly retorno = TimeOnly.TryParse(dados[3], out TimeOnly temp3) ? temp3 : TimeOnly.MinValue;
             TimeOnly saida = TimeOnly.TryParse(dados[4], out TimeOnly temp4) ? temp4 : TimeOnly.MinValue;
 
-            Registro novoRegistro = new Registro
+            Registro novoRegistro = new()
             {
                 Data = data,
                 Entrada = entrada,
