@@ -70,7 +70,7 @@
                     <a class="page-link" asp-route-pagina="@i">@i</a>
                 </li>
             }
-            <li class="page-item @(Model.PaginaAtual == Model.TotalPaginas ? "disabled" : "")">
+            <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
                 <a class="page-link" asp-route-pagina="@(Model.PaginaAtual + 1)">Próxima</a>
             </li>
         </ul>

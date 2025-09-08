@@ -13,6 +13,7 @@ namespace SharpPontoWeb.Pages
     public int PaginaAtual { get; set; } = 1;
     public int TotalPaginas { get; set; }
     public int TamanhoPagina { get; set; } = 10;
+    public bool HasNextPage => PaginaAtual < TotalPaginas && TotalPaginas > 0;
 
         public async Task OnGetAsync(int? pagina)
         {
