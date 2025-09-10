@@ -12,7 +12,7 @@ using SharpPontoWeb.Data;
 namespace SharpPontoWeb.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250908024654_Inicial")]
+    [Migration("20250909212437_Inicial")]
     partial class Inicial
     {
         /// <inheritdoc />

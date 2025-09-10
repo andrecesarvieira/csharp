@@ -4,8 +4,10 @@
     ViewData["Title"] = "Registros de Ponto";
 }
 
+@* Exibe espaçamento superior *@
 <div class="mb-1"></div>
 
+@* Exibe mensagens de erro de validação do ModelState *@
 @if (!ViewData.ModelState.IsValid)
 {
     <div class="alert alert-danger">
@@ -16,8 +18,10 @@
     </div>
 }
 
+@* Espaçamento entre alertas e tabela *@
 <div class="mb-3"></div>
 
+@* Tabela de registros de ponto *@
 <table class="table table-striped">
     <thead>
         <tr>
@@ -33,6 +37,7 @@
         </tr>
     </thead>
     <tbody>
+    @* Itera sobre os registros e exibe cada linha *@
         @foreach (var registro in Model.Registros)
         {
             <tr>
@@ -45,7 +50,9 @@
                 <td>@registro.Tarde</td>
                 <td>@registro.TotalDia</td>
                 <td>
+            @* Botão para editar registro *@
                     <a asp-page="Editar" asp-route-id="@registro.Id" class="btn btn-warning btn-sm">Editar</a>
+            @* Formulário para excluir registro *@
                     <form method="post" asp-page-handler="Excluir" style="display:inline;" onsubmit="return confirm('Tem certeza que deseja excluir este registro?');">
                         <input type="hidden" name="id" value="@registro.Id" />
                         <button type="submit" class="btn btn-danger btn-sm">Excluir</button>
@@ -58,23 +65,28 @@
 </table>
 
 
+@* Bloco de paginação e botão de registro rápido *@
 <div class="d-flex justify-content-between align-items-center mb-3">
     <nav>
         <ul class="pagination mb-0">
+        @* Botão página anterior *@
             <li class="page-item @(Model.PaginaAtual == 1 ? "disabled" : "")">
                 <a class="page-link" asp-route-pagina="@(Model.PaginaAtual - 1)">Anterior</a>
             </li>
+        @* Botões de páginas individuais *@
             @for (int i = 1; i <= Model.TotalPaginas; i++)
             {
                 <li class="page-item @(Model.PaginaAtual == i ? "active" : "")">
                     <a class="page-link" asp-route-pagina="@i">@i</a>
                 </li>
             }
-            <li class="page-item @(Model.HasNextPage ? "" : "disabled")">
+        @* Botão próxima página *@
+            <li class="page-item @(Model.TemMaisPaginas ? "" : "disabled")">
                 <a class="page-link" asp-route-pagina="@(Model.PaginaAtual + 1)">Próxima</a>
             </li>
         </ul>
     </nav>
+    @* Botão para registrar ponto *@
     <form method="post" asp-page-handler="Registrar" class="ms-auto">
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>
@@ -82,7 +94,8 @@
 
 <br></br>
 
-<h5>Inserir Manualmente</h5>
+@* Formulário para inserir registro manualmente *@
+<h5>Inserir manualmente</h5>
 <form method="post" asp-page-handler="Inserir" class="row g-3">
     <div class="col">
         <input type="date" name="Data" class="form-control" required value="@DateTime.Now.ToString("yyyy-MM-dd")" />
