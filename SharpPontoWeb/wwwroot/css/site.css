@@ -29,3 +29,88 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* Modo escuro automático e manual */
+html[data-theme='dark'] {
+  background: #121212;
+}
+body[data-theme='dark'] {
+  background: #121212;
+  color: #f1f1f1;
+}
+/* Navbar escura e título claro */
+.navbar[data-theme='dark'] {
+  background: #222326 !important;
+  color: #f1f1f1 !important;
+}
+.navbar[data-theme='dark'] .navbar-brand {
+  color: #f1f1f1 !important;
+}
+@media (prefers-color-scheme: dark) {
+  html, body {
+    background: #181a1b;
+    color: #e8e6e3;
+  }
+    background: #181a1b;
+    color: #e8e6e3;
+    color: #e8e6e3 !important;
+  }
+    background: #23272b !important;
+    color: #e8e6e3 !important;
+  background-color: #222326;
+  color: #f1f1f1;
+    color: #e8e6e3 !important;
+html[data-theme='dark'] .table th, html[data-theme='dark'] .table td {
+  background-color: #222326 !important;
+    background-color: #23272b;
+    color: #e8e6e3;
+html[data-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #181a1b !important;
+    background-color: #23272b !important;
+    color: #e8e6e3 !important;
+  background: #333 !important;
+  color: #f1f1f1 !important;
+    background-color: #202124 !important;
+}
+html[data-theme='dark'] .btn-warning {
+    background: #343a40 !important;
+    color: #e8e6e3 !important;
+    border-color: #444 !important;
+html[data-theme='dark'] .btn-danger {
+  background: #dc3545 !important;
+    background: #ffe082 !important;
+    color: #23272b !important;
+html[data-theme='dark'] .btn-primary {
+  background: #0d6efd !important;
+    background: #ff5252 !important;
+    color: #fff !important;
+html[data-theme='dark'] .pagination .page-item .page-link {
+  background: #222326 !important;
+    background: #1976d2 !important;
+    color: #fff !important;
+}
+html[data-theme='dark'] .pagination .page-item.active .page-link {
+    background: #23272b !important;
+    color: #e8e6e3 !important;
+    border-color: #444 !important;
+}
+html[data-theme='dark'] .pagination .page-item.disabled .page-link {
+    background: #1976d2 !important;
+    color: #fff !important;
+    border-color: #1976d2 !important;
+}
+html[data-theme='dark'] .btn {
+    background: #343a40 !important;
+    color: #888 !important;
+  }
+  html[data-theme='dark'] .form-control {
+    background: #23272b !important;
+    color: #e8e6e3 !important;
+    border-color: #444 !important;
+  }
+}
+html[data-theme='dark'] .form-control {
+  background: #23272b;
+  color: #e8e6e3;
+  border-color: #444;
+}
