@@ -20,8 +20,15 @@ html {
 body {
   margin-bottom: 60px;
 }
+}
+.container[data-theme='dark'],
+body[data-theme='dark'] .container {
+  background: transparent !important;
+}
+.navbar[data-theme='dark'] {
 
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  border-bottom: 1px solid #444 !important;
   color: var(--bs-secondary-color);
   text-align: end;
 }
@@ -29,88 +36,99 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+  border-color: #444 !important;
 
 /* Modo escuro automático e manual */
 html[data-theme='dark'] {
   background: #121212;
 }
+  border-color: #444 !important;
 body[data-theme='dark'] {
   background: #121212;
   color: #f1f1f1;
+  border-color: #444 !important;
 }
 /* Navbar escura e título claro */
 .navbar[data-theme='dark'] {
   background: #222326 !important;
   color: #f1f1f1 !important;
+  box-shadow: none !important;
 }
 .navbar[data-theme='dark'] .navbar-brand {
   color: #f1f1f1 !important;
 }
+
 @media (prefers-color-scheme: dark) {
-  html, body {
+  body {
     background: #181a1b;
     color: #e8e6e3;
   }
-    background: #181a1b;
-    color: #e8e6e3;
-    color: #e8e6e3 !important;
+  .container {
+    background: transparent !important;
   }
+  .navbar {
     background: #23272b !important;
     color: #e8e6e3 !important;
-  background-color: #222326;
-  color: #f1f1f1;
+    border-bottom: 1px solid #444 !important;
+  }
+  .navbar .navbar-brand {
     color: #e8e6e3 !important;
-html[data-theme='dark'] .table th, html[data-theme='dark'] .table td {
-  background-color: #222326 !important;
+  }
+  .table {
     background-color: #23272b;
     color: #e8e6e3;
-html[data-theme='dark'] .table-striped > tbody > tr:nth-of-type(odd) {
-  background-color: #181a1b !important;
+    border-color: #444 !important;
+  }
+  .table th,
+  .table td {
     background-color: #23272b !important;
     color: #e8e6e3 !important;
-  background: #333 !important;
-  color: #f1f1f1 !important;
+    border-color: #444 !important;
+  }
+  .table-striped > tbody > tr:nth-of-type(odd) {
     background-color: #202124 !important;
-}
-html[data-theme='dark'] .btn-warning {
+    border-color: #444 !important;
+  }
+  .btn {
     background: #343a40 !important;
     color: #e8e6e3 !important;
     border-color: #444 !important;
-html[data-theme='dark'] .btn-danger {
-  background: #dc3545 !important;
-    background: #ffe082 !important;
+    box-shadow: none !important;
+  }
+  .btn-warning {
+    background: #c9a100 !important;
     color: #23272b !important;
-html[data-theme='dark'] .btn-primary {
-  background: #0d6efd !important;
-    background: #ff5252 !important;
-    color: #fff !important;
-html[data-theme='dark'] .pagination .page-item .page-link {
-  background: #222326 !important;
-    background: #1976d2 !important;
-    color: #fff !important;
-}
-html[data-theme='dark'] .pagination .page-item.active .page-link {
-    background: #23272b !important;
+  }
+  html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+  }
+
+  body {
+    margin-bottom: 60px;
+  }
+
+  .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+    color: var(--bs-secondary-color);
+    text-align: end;
+  }
+
+  .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+    text-align: start;
+  }
+
     color: #e8e6e3 !important;
     border-color: #444 !important;
-}
-html[data-theme='dark'] .pagination .page-item.disabled .page-link {
-    background: #1976d2 !important;
-    color: #fff !important;
-    border-color: #1976d2 !important;
-}
-html[data-theme='dark'] .btn {
-    background: #343a40 !important;
-    color: #888 !important;
   }
-  html[data-theme='dark'] .form-control {
-    background: #23272b !important;
-    color: #e8e6e3 !important;
-    border-color: #444 !important;
-  }
-}
-html[data-theme='dark'] .form-control {
-  background: #23272b;
-  color: #e8e6e3;
-  border-color: #444;
 }
